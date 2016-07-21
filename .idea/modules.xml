@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AlchemistAndroidUtil.iml" filepath="$PROJECT_DIR$/AlchemistAndroidUtil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alchemistutil/alchemistutil.iml" filepath="$PROJECT_DIR$/alchemistutil/alchemistutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utilexample/utilexample.iml" filepath="$PROJECT_DIR$/utilexample/utilexample.iml" />
+    </modules>
+  </component>
+</project>
