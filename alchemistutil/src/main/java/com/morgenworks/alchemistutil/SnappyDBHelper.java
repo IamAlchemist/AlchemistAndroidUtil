@@ -9,7 +9,7 @@ import com.snappydb.SnappyDB;
 import com.snappydb.SnappydbException;
 
 /**
- * Created by wizard on 7/21/16.
+ * This is Created by wizard on 7/21/16.
  */
 public class SnappyDBHelper {
     private static String TAG = SnappyDB.class.getName();
@@ -84,4 +84,10 @@ public class SnappyDBHelper {
             }
         }
     }
+
+    public static String getKeyFromId(String prefix, String id) {
+        return prefix + id;
+    }
+
+
 }
