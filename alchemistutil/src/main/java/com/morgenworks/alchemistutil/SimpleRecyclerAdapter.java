@@ -11,12 +11,13 @@ import java.util.List;
 /**
  * This is Created by alchemist li on 7/22/16.
  */
-public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleViewHolder1> {
+public class SimpleRecyclerAdapter<T extends RecyclerSimpleItem> extends RecyclerView.Adapter<SimpleViewHolder1> {
 
-    private List<String> data;
-    private SimpleRecyclerAdapterDelegate delegate;
+    private List<T> data = null;
 
-    public SimpleRecyclerAdapter(List<String> data, SimpleRecyclerAdapterDelegate delegate) {
+    private SimpleRecyclerAdapterDelegate<T> delegate = null;
+
+    public SimpleRecyclerAdapter(List<T> data, SimpleRecyclerAdapterDelegate<T> delegate) {
         this.data = new ArrayList<>(data);
         this.delegate = delegate;
     }
@@ -29,7 +30,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleViewHolder
 
     @Override
     public void onBindViewHolder(final SimpleViewHolder1 holder, int position) {
-        holder.textView.setText(data.get(position));
+        holder.textView.setText(data.get(position).getText());
 
         if (delegate != null) {
             holder.root.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.morgenworks.alchemistutil.FileUtils;
+import com.morgenworks.alchemistutil.RecyclerStringItem;
 import com.morgenworks.alchemistutil.SimpleRecyclerAdapter;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -21,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        List<String> data = new ArrayList<>();
-        data.add("hello");
-        data.add("world");
+        List<RecyclerStringItem> data = new ArrayList<>();
+        data.add(new RecyclerStringItem("hello"));
+        data.add(new RecyclerStringItem("world"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).build());
-        recyclerView.setAdapter(new SimpleRecyclerAdapter(data, null));
+        recyclerView.setAdapter(new SimpleRecyclerAdapter<>(data, null));
 
         FileUtils.createGetContentIntent();
     }
