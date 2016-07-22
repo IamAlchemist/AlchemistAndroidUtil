@@ -1,7 +1,7 @@
 package com.morgenworks.alchemistutil;
 
 /**
- * Created by wizard on 7/21/16.
+ * This is Created by wizard on 7/21/16.
  */
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -47,7 +47,7 @@ public class FileUtils {
     /**
      * Gets the extension of a file name, like ".png" or ".jpg".
      *
-     * @param uri
+     * @param uri uri
      * @return Extension including the dot("."); "" if there is no extension;
      *         null if uri was null.
      */
@@ -66,16 +66,15 @@ public class FileUtils {
     }
 
     /**
+     * @param url url
      * @return Whether the URI is a local one.
      */
     public static boolean isLocal(String url) {
-        if (url != null && !url.startsWith("http://") && !url.startsWith("https://")) {
-            return true;
-        }
-        return false;
+        return url != null && !url.startsWith("http://") && !url.startsWith("https://");
     }
 
     /**
+     * @param uri uri
      * @return True if Uri is a MediaStore Uri.
      * @author paulburke
      */
@@ -86,7 +85,7 @@ public class FileUtils {
     /**
      * Convert File into Uri.
      *
-     * @param file
+     * @param file file
      * @return uri
      */
     public static Uri getUri(File file) {
@@ -99,8 +98,8 @@ public class FileUtils {
     /**
      * Returns the path only (without file name).
      *
-     * @param file
-     * @return
+     * @param file file
+     * @return file
      */
     public static File getPathWithoutFilename(File file) {
         if (file != null) {
@@ -124,6 +123,7 @@ public class FileUtils {
     }
 
     /**
+     * @param file file
      * @return The MIME type for the given file.
      */
     public static String getMimeType(File file) {
@@ -137,10 +137,18 @@ public class FileUtils {
     }
 
     /**
+     * @param context context
+     * @param uri uri
      * @return The MIME type for the give Uri.
      */
     public static String getMimeType(Context context, Uri uri) {
-        File file = new File(getPath(context, uri));
+        if (uri == null || context == null)
+            return null;
+        String path = getPath(context, uri);
+        if (path == null)
+            return null;
+
+        File file = new File(path);
         return getMimeType(file);
     }
 
@@ -343,8 +351,8 @@ public class FileUtils {
     /**
      * Get the file size in a human-readable string.
      *
-     * @param size
-     * @return
+     * @param size size
+     * @return string
      * @author paulburke
      */
     public static String getReadableFileSize(int size) {
@@ -375,9 +383,9 @@ public class FileUtils {
      * Attempt to retrieve the thumbnail of given File from the MediaStore. This
      * should not be called on the UI thread.
      *
-     * @param context
-     * @param file
-     * @return
+     * @param context context
+     * @param file file
+     * @return BitMap
      * @author paulburke
      */
     public static Bitmap getThumbnail(Context context, File file) {
@@ -388,9 +396,9 @@ public class FileUtils {
      * Attempt to retrieve the thumbnail of given Uri from the MediaStore. This
      * should not be called on the UI thread.
      *
-     * @param context
-     * @param uri
-     * @return
+     * @param context context
+     * @param uri uri
+     * @return Bitmap
      * @author paulburke
      */
     public static Bitmap getThumbnail(Context context, Uri uri) {
@@ -401,10 +409,10 @@ public class FileUtils {
      * Attempt to retrieve the thumbnail of given Uri from the MediaStore. This
      * should not be called on the UI thread.
      *
-     * @param context
-     * @param uri
-     * @param mimeType
-     * @return
+     * @param context context
+     * @param uri uri
+     * @param mimeType mimeType
+     * @return Bitmap
      * @author paulburke
      */
     public static Bitmap getThumbnail(Context context, Uri uri, String mimeType) {
@@ -422,6 +430,7 @@ public class FileUtils {
             Cursor cursor = null;
             try {
                 cursor = resolver.query(uri, null, null, null, null);
+                assert cursor != null;
                 if (cursor.moveToFirst()) {
                     final int id = cursor.getInt(0);
                     if (DEBUG)

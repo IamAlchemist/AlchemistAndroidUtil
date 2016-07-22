@@ -9,13 +9,13 @@ import android.os.Bundle;
  * This is Created by wizard on 7/22/16.
  */
 public class PackageHelper {
+//    * get something like this in manifest
+//            *
+//            * <meta-data
+//    *     android:name="api_key"
+//            *     android:value="rSnC9rrboiiVGz0qETWYvWct" />
+//            *
     /**
-     * get something like this
-     *
-     * <meta-data
-     *     android:name="api_key"
-     *     android:value="rSnC9rrboiiVGz0qETWYvWct" />
-     *
      * @param context context
      * @param metaKey  key, such as "api_key"
      * @return value
