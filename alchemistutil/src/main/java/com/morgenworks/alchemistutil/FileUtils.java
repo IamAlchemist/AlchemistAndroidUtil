@@ -7,6 +7,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.graphics.Bitmap;
@@ -22,6 +23,9 @@ import java.io.File;
 import java.io.FileFilter;
 import java.text.DecimalFormat;
 import java.util.Comparator;
+import java.util.List;
+
+import retrofit2.http.PUT;
 
 /**
  * @version 2009-07-03
@@ -520,5 +524,23 @@ public class FileUtils {
         // Only return URIs that can be opened with ContentResolver
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         return intent;
+    }
+
+    public enum FileType {
+        PDF
+    }
+
+    public static boolean canHandleFileType(Context context, FileType type) {
+        switch (type) {
+            case PDF:
+                PackageManager packageManager = context.getPackageManager();
+                Intent testIntent = new Intent(Intent.ACTION_VIEW);
+                testIntent.setType("application/pdf");
+                List list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+                return list.size() > 0;
+
+            default:
+                return false;
+        }
     }
 }
