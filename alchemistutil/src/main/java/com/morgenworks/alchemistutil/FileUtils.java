@@ -245,6 +245,7 @@ public class FileUtils {
      * @param uri The Uri to query.
      * @see #isLocal(String)
      * @see #getFile(Context, Uri)
+     * @return path
      * @author paulburke
      */
     public static String getPath(final Context context, final Uri uri) {
@@ -332,7 +333,8 @@ public class FileUtils {
 
     /**
      * Convert Uri into File, if possible.
-     *
+     * @param context context
+     * @param uri uri
      * @return file A local file that the Uri was pointing to, or null if the
      *         Uri is unsupported or pointed to a remote resource.
      * @see #getPath(Context, Uri)

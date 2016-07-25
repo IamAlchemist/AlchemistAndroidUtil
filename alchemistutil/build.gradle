@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 3
-        versionName "0.1.3"
+        versionCode 6
+        versionName "0.1.6"
     }
     buildTypes {
         release {
@@ -26,6 +26,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.snappydb:snappydb-lib:0.5.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+//    compile 'com.squareup.okhttp:okhttp:2.4.0'
+
 }
 
 ext {
@@ -38,7 +43,7 @@ ext {
     siteUrl = 'https://github.com/IamAlchemist/AlchemistAndroidUtil'                    // #CONFIG# // project homepage
     gitUrl = 'https://github.com/IamAlchemist/AlchemistAndroidUtil.git'                 // #CONFIG# // project git url
 
-    libraryVersion = '0.1.3'//版本号
+    libraryVersion = '0.1.6'//版本号
     libraryName = 'alchemistutil'//项目名字，没什么用
     libraryDescription = 'alchemist util for Android'//项目描述，没什么用
 
