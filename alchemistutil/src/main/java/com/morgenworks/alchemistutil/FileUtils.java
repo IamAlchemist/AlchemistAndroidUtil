@@ -527,16 +527,28 @@ public class FileUtils {
     }
 
     public enum FileType {
-        PDF
+        PDF,
+        IMAGE
     }
 
     public static boolean canHandleFileType(Context context, FileType type) {
+        PackageManager packageManager;
+        Intent testIntent;
+        List list;
+
         switch (type) {
             case PDF:
-                PackageManager packageManager = context.getPackageManager();
-                Intent testIntent = new Intent(Intent.ACTION_VIEW);
+                packageManager = context.getPackageManager();
+                testIntent = new Intent(Intent.ACTION_VIEW);
                 testIntent.setType("application/pdf");
-                List list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+                list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+                return list.size() > 0;
+
+            case IMAGE:
+                packageManager = context.getPackageManager();
+                testIntent = new Intent(Intent.ACTION_VIEW);
+                testIntent.setType("application/pdf");
+                list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
                 return list.size() > 0;
 
             default:
