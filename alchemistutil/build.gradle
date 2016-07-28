@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 7
-        versionName "0.1.7"
+        versionCode 8
+        versionName "0.1.8"
     }
     buildTypes {
         release {
@@ -43,7 +43,7 @@ ext {
     siteUrl = 'https://github.com/IamAlchemist/AlchemistAndroidUtil'                    // #CONFIG# // project homepage
     gitUrl = 'https://github.com/IamAlchemist/AlchemistAndroidUtil.git'                 // #CONFIG# // project git url
 
-    libraryVersion = '0.1.7'//版本号
+    libraryVersion = '0.1.8'//版本号
     libraryName = 'alchemistutil'//项目名字，没什么用
     libraryDescription = 'alchemist util for Android'//项目描述，没什么用
 
