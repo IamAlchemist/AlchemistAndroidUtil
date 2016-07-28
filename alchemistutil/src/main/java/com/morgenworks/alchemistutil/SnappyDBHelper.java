@@ -44,6 +44,7 @@ public class SnappyDBHelper {
         } catch (SnappydbException e) {
 
             Log.e(TAG, e.getLocalizedMessage());
+            e.printStackTrace();
 
             try {
                 if (snappydb != null && snappydb.isOpen() ) {
@@ -51,6 +52,7 @@ public class SnappyDBHelper {
                 }
             } catch (SnappydbException e1) {
                 Log.e(TAG, e.getLocalizedMessage());
+                e.printStackTrace();
             }
         }
 
